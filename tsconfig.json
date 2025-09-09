@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "types": ["vitest/globals"], 
+      /* Additional Checks */
+    "noUnusedLocals": true,                /* Report errors on unused locals. */
+    "noUnusedParameters": true,            /* Report errors on unused parameters. */
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+
+    "forceConsistentCasingInFileNames": true,  // 파일 이름의 대소문자 일관성 강제
+    "noFallthroughCasesInSwitch": true,       // switch문에서 fallthrough 케이스 방지
+    "noImplicitOverride": true,               // 메서드 오버라이드 시 'override' 키워드 강제
+    "allowImportingTsExtensions": true,       // .ts 확장자 import 허용
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/chatbot.js", "public/chatbot.js", "app/about/projects/page.tsx"],
+  "exclude": ["node_modules"],
+
+}

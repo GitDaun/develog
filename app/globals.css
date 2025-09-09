@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+   /* 폰트 변수 추가해야 반영됨 25.08.09 */
+   --font-dunggeunmo: var(--font-dunggeunmo);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+/* 
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+body {
+  @apply bg-black text-gray-300 container mx-auto max-w-2xl;
+  font-family: var(--font-dunggeunmo), sans-serif;
+}
+
+.link {
+  @apply pr-3 md:p-3 text-lg font-semibold text-blue-400 hover:text-blue-600;
+}
