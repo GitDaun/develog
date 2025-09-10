@@ -2,11 +2,13 @@
 
 import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
+import { MDXRemote } from 'next-mdx-remote-client/rsc';
+import fs from 'fs';
+import path from 'path';
 
 const titles = {
   first: 'First Blog Post',
   second: 'Second Blog Post',
-  third: 'Third Blog Post',
 } as const;
 
 type TitleKeys = keyof typeof titles;
@@ -39,11 +41,15 @@ export default async function BlogPost({ params }: { params: Params }) {
     notFound();
   }
 
+  const markdown = fs.readFileSync(
+    path.join(process.cwd(), 'content', `${slug}.mdx`),
+    'utf-8'
+  );
+
   return (
-    <div>
-      <h1>Blog Post</h1>
-      <p>{slug}</p>
-    </div>
+    <article className='prose prose-invert'>
+      <MDXRemote source={markdown} />
+    </article>
   );
 }
 
@@ -52,6 +58,5 @@ export function generateStaticParams(): Params[] {
   return [
     { slug: 'first' },
     { slug: 'second' },
-    { slug: 'third' },
   ];
 }
